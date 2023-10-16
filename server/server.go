@@ -12,15 +12,17 @@ import (
 	"github.com/libp2p/go-libp2p/p2p/net/connmgr"
 	"github.com/libp2p/go-libp2p/p2p/security/noise"
 	libp2ptls "github.com/libp2p/go-libp2p/p2p/security/tls"
-	"io"
+	"github.com/twingdev/twingcli/common/fs"
+	"google.golang.org/grpc"
 	"log"
 	"time"
 )
 
 type Node struct {
-	ID   peer.ID
-	Host host.Host
-	io.Closer
+	ID         peer.ID
+	Host       host.Host
+	GrpcServer grpc.Server
+	Reader     chan *fs.StreamIO
 }
 
 type IServer interface {

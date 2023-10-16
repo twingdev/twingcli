@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+import "github.com/twingdev/twingcli/pb/messages.proto";
+
+message HealthRequest {
+  MessageData messageData = 1;
+}

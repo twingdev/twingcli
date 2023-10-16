@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package protocols.messages;
+
+message MessageData {
+  string clientVersion = 1;
+  int64 timestamp = 2;
+  string id = 3;
+  bool gossip = 4;
+  string nodeID = 5;
+  bytes nodePubKey = 6;
+  bytes sign = 7;
+}

@@ -6,7 +6,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-
 	"github.com/twingdev/twingcli/server"
 
 	"github.com/spf13/cobra"

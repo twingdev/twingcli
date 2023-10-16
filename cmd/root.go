@@ -22,8 +22,6 @@ THE SOFTWARE.
 package cmd
 
 import (
-	"context"
-	"github.com/sirupsen/logrus"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -54,12 +52,7 @@ func Execute() {
 }
 
 func init() {
-	ctx := context.TODO()
-	// send logs
-	logrus.WithContext(ctx).WithField("hello", "world").Info("welcome to highlight.io")
-	// send logs with a string message severity
-	lvl, _ := logrus.ParseLevel("warn")
-	logrus.WithContext(ctx).Log(lvl, "whoa there")
+
 	// Here you will define your flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.

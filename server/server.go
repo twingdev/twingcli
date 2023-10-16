@@ -13,7 +13,7 @@ import (
 	"github.com/libp2p/go-libp2p/p2p/security/noise"
 	libp2ptls "github.com/libp2p/go-libp2p/p2p/security/tls"
 	"io"
-
+	"log"
 	"time"
 )
 
@@ -96,13 +96,17 @@ func (n *Node) Build(ctx context.Context, out host.Host) {
 
 	n.ID = out.ID()
 
-}
-
-func (n *Node) Bootstrap(ctx context.Context, h host.Host) {
+	defer out.Close()
 	for _, addr := range dht.DefaultBootstrapPeers {
 		pi, _ := peer.AddrInfoFromP2pAddr(addr)
-		// We ignore errors as some bootstrap peers may be down
-		// and that is fine.
-		h.Connect(ctx, *pi)
+		if pi.ID != n.ID {
+
+			// We ignore errors as some bootstrap peers may be down
+			// and that is fine.
+			out.Connect(ctx, *pi)
+			log.Printf("peer connected %v", pi.ID)
+
+		}
 	}
+
 }

@@ -1,7 +1,15 @@
 syntax = "proto3";
 
-import "github.com/twingdev/twingcli/pb/messages.proto";
+package protocols.messages;
+
+import "server/pb/messages.proto";
 
 message HealthRequest {
   MessageData messageData = 1;
+  string message = 2;
+}
+
+message HealthResponse {
+  MessageData messageData = 1;
+  string message = 2;
 }

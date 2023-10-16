@@ -24,4 +24,5 @@ build: clean compile_all
 clean:
 	rm -rf cli
 
-
+protoc:
+	protoc --go_out=. server/pb/*.proto
